@@ -2,6 +2,10 @@
 analyzeGPT or journalGPT
 
 
+# Tools used
+- Logo generated [here](https://www.bing.com/images/create/create-a-logo-for-journalanalytics2c-which-analyzes/647e0c3549274ddda094144c55a61012?id=8fHhMS34fZQWPAjwF1nn2g%3d%3d&view=detailv2&idpp=genimg&FORM=GCRIDP&ajaxhist=0&ajaxserp=0)
+- Resized [here](https://imageresizer.com/) 
+
 some webdev things:
 1. chrome vs firefox
 2. security issues (running code in a browser environment)
