@@ -7,7 +7,7 @@ some webdev things:
 2. security issues (running code in a browser environment)
 3. code execution environment - browser: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension
 
-In our first example:
+In our specific example:
 the content.js script analyzes the content of the web page and calculates word frequencies, while the popup.js script handles the user interface and sends messages to the content.js script to trigger the analysis.
 
 
@@ -23,7 +23,7 @@ content.js
 3. Content scripts cannot directly access normal page scripts but can exchange messages with them using the standard window.postMessage() API.
 
 
-Logic between popup/content:
-1. popup js => the java sccript for the popup
+More generally, the logic between popup/content:
+1. popup js => the javascript for the popup
 2. content js => the javascript for the extension overall
 
