@@ -1,6 +1,13 @@
 # chatgpt-analyzer
 analyzeGPT or journalGPT
 
+# Architecture
+- popup.html contains the document structure for the popup
+- popup.css contains the css (optional for now)
+- popup.js contains js for modifying the popup html itself
+- content.js contains js for actually triggering the logic on the page itself. i.e. attaching the listener to the page
+- manifest.json contains the manifest, including author, license, and overall specifying the structure of the add on
+- add.js contains some additional logic
 
 # Tools used
 - Logo generated [here](https://www.bing.com/images/create/create-a-logo-for-journalanalytics2c-which-analyzes/647e0c3549274ddda094144c55a61012?id=8fHhMS34fZQWPAjwF1nn2g%3d%3d&view=detailv2&idpp=genimg&FORM=GCRIDP&ajaxhist=0&ajaxserp=0)
