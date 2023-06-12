@@ -9,6 +9,10 @@ analyzeGPT or journalGPT
 - manifest.json contains the manifest, including author, license, and overall specifying the structure of the add on
 - add.js contains some additional logic
 
+In general, we can view it as the following:
+- content.js/manifest.json js => loaded with the script/before. can attach the listeners to buttons etc. (glue logic)
+- functions/abc.js => contains the code behind the buttons (business logic)
+
 # Tools used
 - Logo generated [here](https://www.bing.com/images/create/create-a-logo-for-journalanalytics2c-which-analyzes/647e0c3549274ddda094144c55a61012?id=8fHhMS34fZQWPAjwF1nn2g%3d%3d&view=detailv2&idpp=genimg&FORM=GCRIDP&ajaxhist=0&ajaxserp=0)
 - Resized [here](https://imageresizer.com/) 
