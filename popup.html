@@ -9,6 +9,8 @@
         padding: 16px;
       }
     </style>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
   </head>
   <body>
     <h1>ChatGPT Analyzer - John Chen</h1>
@@ -17,6 +19,8 @@
     <button id="analyzeMeButton">Analyze Me</button>
     
     <div id="results"></div>
+    <div id="word-cloud">This is where the wordcloud will appear</div>
+    <button id="wordcloud-button"> Press me to generate the wordcloud </button>
     <script src="popup.js"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@
   "version": "1.0",
   "description": "Analyze user interactions with ChatGPT",
   "permissions": ["activeTab"],
+  "content_security_policy": "script-src 'self' https://d3js.org https://cdnjs.cloudflare.com; object-src 'self';",
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -20,7 +21,9 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["content.js","add.js"]
+      
+      "js": ["content.js","add.js", "wordcloud.js"]
     }
   ]
 }
+
