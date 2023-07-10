@@ -6,6 +6,16 @@ analyzeGPT or journalGPT
 2. popup js => specifies the logic behind the popup html buttons - which scripts to trigger upon button press, which messages to pass, and what to do with the response/
 3. individual script files - specifies the logic for their component. Given a message, return a response
 
+therefore:
+1. we can loop over all the pages (one click each)
+2. after each click, we run the given button
+
+Control flow:
+1. user clicks analyze all my conversations!
+2. we click each chat, and wait for it to load
+3. we then trigger another message *and wait*
+4. for each triggered chat, we crunch the data and run the function. if we like, then we can save it to memory.
+
 # Architecture
 - popup.html contains the document structure for the popup
 - popup.css contains the css (optional for now)
