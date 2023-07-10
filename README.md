@@ -3,9 +3,9 @@ analyzeGPT or journalGPT
 
 
 # roadmap
-v0.1 - runs on a single chat
-v0.2 - can add in your chatgpt token to analyze the sentiment. or use some other model to run inference
-v0.3 - can run it on all chats
+- v0.1 - runs on a single chat
+- v0.2 - can add in your chatgpt token to analyze the sentiment. or use some other model to run inference
+- v0.3 - can run it on all chats
 
 
 
