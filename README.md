@@ -1,6 +1,11 @@
 # chatgpt-analyzer
 analyzeGPT or journalGPT
 
+# Architecture - simplified
+1. popup html => the html
+2. popup js => specifies the logic behind the popup html buttons - which scripts to trigger upon button press, which messages to pass, and what to do with the response/
+3. individual script files - specifies the logic for their component. Given a message, return a response
+
 # Architecture
 - popup.html contains the document structure for the popup
 - popup.css contains the css (optional for now)
