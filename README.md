@@ -24,6 +24,14 @@ Control flow:
 3. we then trigger another message *and wait*
 4. for each triggered chat, we crunch the data and run the function. if we like, then we can save it to memory.
 
+
+## Detailed control flow:
+1. popup.html -> popup.js. Popup.js has a mega function which processes stuff
+
+e.g. 
+A. call looping function to load the data
+B. on the data loaded, then, we analyze the content
+
 # Architecture
 - popup.html contains the document structure for the popup
 - popup.css contains the css (optional for now)
