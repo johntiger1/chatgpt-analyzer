@@ -1,3 +1,6 @@
+
+import { stopwords } from './stopwords.js';
+
 chats = document.querySelectorAll('div.relative:nth-child(4) > ol:nth-child(2) li a');
 
 chats.forEach((li, i) => {  
@@ -42,11 +45,35 @@ async function processBlocks() {
     await new Promise(resolve => {
       setTimeout(() => {
         fullblocks[i].click();
+        
         resolve();  
       }, 2000);
     });
+
+
     
+    var text_divs = document.querySelectorAll("div.group:nth-child(2n+1)");
+
+
+    // Extract the text from the message elements
+    const messages = Array.from(text_divs).map((element) => element.childNodes[0].childNodes[1].textContent);
+    
+    // Combine all messages into a single string and split it into words
+    const allWords = messages.join(' ').split(/\s+/);
+
+    // Filter out stopwords and calculate word frequency
+    const wordFrequency = allWords.reduce((acc, word) => {
+    word = word.toLowerCase();
+    if (!stopwords.includes(word)) {
+        acc[word] = (acc[word] || 0) + 1;
+    }
+    return acc;
+    }, {});
+
+
+
     console.log('new iteration', i);
+    console.log(wordFrequency);
 
   }
 
