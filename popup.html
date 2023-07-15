@@ -2,25 +2,49 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <style>
-      body {
-        width: 300px;
-        height: 400px;
-        padding: 16px;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="popup.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stopword/dist/stopword.umd.min.js"></script>
   </head>
   <body>
     <h1>ChatGPT Analyzer - John Chen</h1>
-    <button id="analyzeButton">Analyze</button>
-    Results will also appear here when they are ready. Interesitng, seems like a hot reload is occurring
-    <button id="analyzeMeButton">Analyze Me</button>
+    <!-- <button id="analyzeButton">Analyze</button> -->
+    <!-- Results will also appear here when they are ready. Interesitng, seems like a hot reload is occurring -->
+    <!-- <button id="analyzeMeButton">Analyze Me</button> -->
     
     <div id="results"></div>
-    <div id="word-cloud">This is where the wordcloud will appear</div>
-    <button id="wordcloud-button"> Press me to generate the wordcloud </button>
+    <!-- <div id="word-cloud">This is where the wordcloud will appear</div>
+    <button id="wordcloud-button"> Press me to generate the wordcloud </button> -->
+    
+    <button id="start-button">
+    Start Processing
+  </button>
+  <br>
+
+  <!-- Added these two span elements to display the iteration and total length -->
+  <!-- Added this div to hold the iteration and total length spans -->
+
+
+  <div id="progress-overview">
+    <span id="number-of-chats"></span>
+    <span id="current-status"></span>
+  </div>
+
+<div id="progress-info">
+  <span id="current-iteration"></span>
+  <span id="total-length"></span>
+</div>
+
+  <div id='progress-bar-container'>
+    <div id="progress-bar">
+    </div>
+  </div>
+  <ul id="wordList"></ul>
+  
     <script src="popup.js"></script>
+  <script src="looper.js"></script>
+
   </body>
 </html>
+
