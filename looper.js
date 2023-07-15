@@ -139,11 +139,18 @@ async function processBlocks() {
     const stopwordsSet = new Set(stopwords);
     
     function filterWord(word) {
-      word = word.toLowerCase();
-      if (stopwordsSet.has(word) || /^\d+$/.test(word)) {
-        return false;
-      }
-      return true;
+        // Convert to lowercase
+        word = word.toLowerCase();
+
+        // Remove non-alphanumeric characters
+        word = word.replace(/[^a-z0-9]/gi, '');
+
+        // Filter out stopwords, numeric strings, and short words
+        if (stopwordsSet.has(word) || /^\d+$/.test(word) || word.length < 3) {
+            return false;
+        }
+
+        return true;
     }
     console.log('running');
     
