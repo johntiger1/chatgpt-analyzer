@@ -153,11 +153,14 @@ const BarChart = {
       .attr("width", 0)
       .attr("fill", (d, i) => this.color(i));
 
-    enter.append("text")
+      enter.append("text")
       .attr("class", "bar-text")
       .attr("y", d => this.y(d.text) + this.y.bandwidth() / 2)
-      .attr("x", 4)
+      .attr("x", d => this.x(d.size))  // Position text at the end of the bar
+      .attr("dx", "-.2em")  // Small right padding for the text inside the bar
       .attr("dy", ".35em")
+      .attr("text-anchor", "end")  // Align text to the end of the bar
+      .attr("fill", "black")  // Set a contrasting color for the text
       .text(d => d.text);
 
     // Update selection
@@ -171,10 +174,13 @@ const BarChart = {
       .attr("width", d => this.x(d.size))
       .attr("fill", (d, i) => this.color(i));
 
-    update.select("text")
+      update.select("text")
       .transition().duration(1000)
       .attr("y", d => this.y(d.text) + this.y.bandwidth() / 2)
-      .attr("x", 4)
+      .attr("x", d => this.x(d.size))  // Update position of the text 
+      .attr("dx", "-.2em")  // Small right padding for the text inside the bar
+      .attr("text-anchor", "end")  // Align text to the end of the bar
+      .attr("fill", "black")  // Set a contrasting color for the text
       .text(d => d.text);
 
     // Update axes
@@ -199,8 +205,8 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     progressBar.style.width = request.width;
     progressBarCurrLength.textContent = request.iter;
-    progressStatusText.textContent = "Currently processing..."
-
+    progressStatusText.textContent = "Currently processing...";
+    
 
 
   }
