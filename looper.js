@@ -161,33 +161,40 @@ async function processBlocks() {
 // also keep track of the past history of chats
 let globalWordFrequency = new Map();
 
-  for (let i = 0; i < fullblocks.length; i++) {
-    await new Promise(resolve => {
-      setTimeout(() => {
-        fullblocks[i].click();
-        resolve();  
-      }, 2000);
-    });
+for (let i = 0; i < fullblocks.length; i++) {
+  await new Promise(resolve => {
+    setTimeout(() => {
+      fullblocks[i].click();
+      resolve();  
+    }, 2000);
+  });
 
-    var text_divs = document.querySelectorAll("div.group:nth-child(2n+1)");
-    const messages = Array.from(text_divs).map((element) => element.childNodes[0].childNodes[1].textContent);
-    const allWords = messages.join(' ').split(/\s+/);
+  var text_divs = document.querySelectorAll("div.group:nth-child(2n+1)");
 
+  // Error checking: if text_divs is empty
+  if (!text_divs.length) {
+    console.error(`No matching elements found for "div.group:nth-child(2n+1)" at iteration ${i}.`);
+    continue;  // Skip this iteration and continue with the next one
+  }
 
-    let wordFrequency = allWords.reduce((acc, word) => {
-        if (filterWord(word)) {
-          acc[word] = (acc[word] || 0) + 1;  // Update wordFrequency
-          globalWordFrequency.set(word, (globalWordFrequency.get(word) || 0) + 1);  // Update globalWordFrequency
-        }
-        return acc;
-      }, {});
+  const messages = Array.from(text_divs).map((element) => element.childNodes[0].childNodes[1].textContent);
+  const allWords = messages.join(' ').split(/\s+/);
 
-    let arrayFrequency = Object.entries(wordFrequency);
-    arrayFrequency.sort((a, b) => b[1] - a[1]);
-    wordFrequency = Object.fromEntries(arrayFrequency);
-    
-    console.log('new iteration', i);
-    console.log(wordFrequency);
+  let wordFrequency = allWords.reduce((acc, word) => {
+    if (filterWord(word)) {
+      acc[word] = (acc[word] || 0) + 1;  // Update wordFrequency
+      globalWordFrequency.set(word, (globalWordFrequency.get(word) || 0) + 1);  // Update globalWordFrequency
+    }
+    return acc;
+  }, {});
+
+  let arrayFrequency = Object.entries(wordFrequency);
+  arrayFrequency.sort((a, b) => b[1] - a[1]);
+  wordFrequency = Object.fromEntries(arrayFrequency);
+  
+  console.log('new iteration', i);
+  console.log(wordFrequency);
+
 
 // Convert the globalWordFrequency Map to an array of entries
 let globalArrayFrequency = Array.from(globalWordFrequency.entries());
@@ -199,7 +206,12 @@ globalArrayFrequency.sort((a, b) => b[1] - a[1]);
 globalWordFrequency = new Map(globalArrayFrequency);
 
     browser.runtime.sendMessage({action: "wordCounterUpdate", globalWordFrequency: globalWordFrequency });
+    
+    if (i % 3 == 0){
+        browser.runtime.sendMessage({action: "wordCloudUpdate", globalWordFrequency: globalWordFrequency });
 
+    }
+    
 
     browser.runtime.sendMessage({action: "progessBarUpdate", width: ((i + 1) / fullblocks.length) * 100 + '%', iter: i});
 
