@@ -13,9 +13,14 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
       // Extract the text from the message elements
       const messages = Array.from(divs).map((element) => element.childNodes[0].childNodes[1].textContent);
-  
+      
+      const newString = sw.removeStopwords(messages)
+      console.log(newString)
+
       // Combine all messages into a single string and split it into words
       const allWords = messages.join(' ').split(/\s+/);
+
+      
   
       // Calculate word frequency
       const wordFrequency = allWords.reduce((acc, word) => {
