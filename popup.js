@@ -1,3 +1,5 @@
+console.log('wtf is going on');
+
 console.log('aqweq adding event listener')
 const topK = 25;
 

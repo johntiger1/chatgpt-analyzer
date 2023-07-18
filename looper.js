@@ -1,5 +1,5 @@
 // import { stopwords } from './stopwords.js';
-
+console.log('beginning')
 async function processBlocks() {
 
 
@@ -239,5 +239,5 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // Indicate that we will respond asynchronously
   });
   
-console.log('ready to run')
+console.log('ready to run');
   
