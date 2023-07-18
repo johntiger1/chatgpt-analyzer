@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F6;
+    color: #333333;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  #results, #word-cloud, #wordList {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #start-button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  
+  #start-button:hover {
+    background-color: #0056b3;
+  }
+  
+  #progress-overview, #progress-info {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  #progress-bar-container {
+    background-color: #E0E0E0;
+    height: 20px;
+    border-radius: 10px;
+  }
+  
+  #progress-bar {
+    background-color: #007BFF;
+    height: 20px;
+    width: 0;
+    border-radius: 10px;
+  }
+  
+  #wordList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #wordList li {
+    padding: 5px 0;
+    border-bottom: 1px solid #DDD;
+  }
+  
+  #wordList li:last-child {
+    border-bottom: none;
+  }
+
+  #start-button:disabled {
+    background-color: grey;
+    color: white;
+  }
+
+  .bar:hover {
+    fill: steelblue;
+  }
+
+  .tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
