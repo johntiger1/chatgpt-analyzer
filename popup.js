@@ -131,63 +131,65 @@ const BarChart = {
     // Sort and slice wordArray
     wordArray.sort((a, b) => b.size - a.size);
     wordArray = wordArray.slice(0, 10);
-
+  
     // Update scale domains
     this.y.domain(wordArray.map(d => d.text));
     this.x.domain([0, d3.max(wordArray, d => d.size)]);
     this.color.domain([0, wordArray.length - 1]);
-
+  
     // Bind data
     const bars = this.svg.selectAll(".bar")
       .data(wordArray, d => d.text);
-
+  
     // Handle exit selection
     bars.exit().remove();
-
+  
     // Handle enter selection
     const enter = bars.enter().append("g");
-
+  
     enter.append("rect")
       .attr("class", "bar")
       .attr("y", d => this.y(d.text))
       .attr("height", this.y.bandwidth())
       .attr("x", 0)
-      .attr("width", 0)
-      .attr("fill", (d, i) => this.color(i));
-
+      .attr("width", 0);
+  
       enter.append("text")
       .attr("class", "bar-text")
       .attr("y", d => this.y(d.text) + this.y.bandwidth() / 2)
-      .attr("x", d => this.x(d.size))  // Position text at the end of the bar
-      .attr("dx", "-.2em")  // Small right padding for the text inside the bar
+      .attr("x", 5)  // Small left padding for the text inside the bar
       .attr("dy", ".35em")
-      .attr("text-anchor", "end")  // Align text to the end of the bar
+      .attr("text-anchor", "start")  // Align text to the start of the bar
       .attr("fill", "black")  // Set a contrasting color for the text
       .text(d => d.text);
-
+  
     // Update selection
     const update = bars.merge(enter);
-
+  
     update.select("rect")
       .transition().duration(1000)
       .attr("y", d => this.y(d.text))
       .attr("height", this.y.bandwidth())
       .attr("x", 0)
-      .attr("width", d => this.x(d.size))
-      .attr("fill", (d, i) => this.color(i));
-
+      .attr("width", d => this.x(d.size));
+  
       update.select("text")
       .transition().duration(1000)
       .attr("y", d => this.y(d.text) + this.y.bandwidth() / 2)
-      .attr("x", d => this.x(d.size))  // Update position of the text 
-      .attr("dx", "-.2em")  // Small right padding for the text inside the bar
-      .attr("text-anchor", "end")  // Align text to the end of the bar
+      .attr("x", 5)  // Small left padding for the text inside the bar
+      .attr("text-anchor", "start")  // Align text to the start of the bar
       .attr("fill", "black")  // Set a contrasting color for the text
       .text(d => d.text);
-
+  
     // Update axes
     this.xAxis.transition().duration(1000).call(d3.axisBottom(this.x));
+  
+    // Set the fill color for both the enter and update selections
+    this.svg.selectAll(".bar")
+      .attr("fill", (d, i) => this.color(i));
   }
+
+
 };
 
 
@@ -214,11 +216,11 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
   else if  (request.action=="initializeProgressBar") {
-    const progressBarTotalLength = document.getElementById('total-length');
+    // const progressBarTotalLength = document.getElementById('total-length');
     const numberOfChats = document.getElementById('number-of-chats');
     const progressStatusText = document.getElementById('current-status');
 
-    progressBarTotalLength.textContent = request.length
+    // progressBarTotalLength.textContent = request.length
     numberOfChats.textContent = "Identified " + request.length + " chats!"
     progressStatusText.textContent = "Beginning processing..."
     const start_button = document.getElementById('start-button')
