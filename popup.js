@@ -203,13 +203,11 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     // Change the text of the element
     const progressBar = document.getElementById('progress-bar');
-    const progressBarCurrLength = document.getElementById('current-iteration');
     const progressStatusText = document.getElementById('current-status');
 
 
     progressBar.style.width = request.width;
-    progressBarCurrLength.textContent = request.iter;
-    progressStatusText.textContent = "Currently processing...";
+    progressStatusText.textContent = "Currently processing..." + request.iter;
     
 
 
